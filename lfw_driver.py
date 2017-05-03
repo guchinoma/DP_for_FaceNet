@@ -15,7 +15,7 @@ from six.moves import xrange
 import tensorflow as tf
 
 #from adversarial.fastgradientsign_advgen_triplet_losses import FastGradientSign_AdvGen
-from adversarial.triplet_loss_with_pulp_adv import TripletLoss_AdvGen
+from adversarial.triplet_loss_advgen import TripletLoss_AdvGen
 
 import facenet
 
@@ -42,16 +42,16 @@ def main(argv=None):
 
         #saver = tf.train.Saver(tf.global_variable())
 
-        print('Now it is the time to load from the downloaded one, loading model checkpoint from:', config.get('main', 'checkpoint_dir'))
+        print("Now it is the time to load from the downloaded one")
 
         #############################
-        image_size = 160
-        batch_size = 128
+        image_size = config.getint("main", "image_size")
+        batch_size = config.getint("main", "batch_size")
         # batch means the subset of the learning data.
-        max_nrof_epochs = 500
+        max_nrof_epochs = config.getint("main", "max_nrof_epochs")
         random_crop = True
         random_flip = False
-        nrof_preprocess_threads = 4
+        nrof_preprocess_threads = config.getint("main", "nrof_preprocess_threads")
         ############################     
 
         # Get the directory
@@ -128,10 +128,12 @@ def main(argv=None):
 
     print("succees in generating images")
 
+    output_dir = config.get("main", "image_output_path")
+
     #fastgradientsign_advgen = FastGradientSign_AdvGen(cmd_args, [1, 24, 24, 3], config)
     #fastgradientsign_advgen.run_queue_for_lfw(input_dict, num_classes, lfw_list)
     tripletloss_advgen = TripletLoss_AdvGen(cmd_args, [1, 24, 24, 3], config)
-    tripletloss_advgen.run_queue_for_lfw(input_dict, num_classes, lfw_list)
+    tripletloss_advgen.run_queue_for_lfw(input_dict, num_classes, lfw_list, output_dir)
 
 if __name__ == '__main__':
 

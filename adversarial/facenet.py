@@ -104,7 +104,7 @@ def read_images_from_disk(input_queue):
     """
     label = input_queue[1]
     file_contents = tf.read_file(input_queue[0])
-    example = tf.image.decode_png(file_contents, channels=3)
+    example = tf.image.decode_jpeg(file_contents, channels=3)
     return example, label
   
 def read_and_augument_data(image_list, label_list, image_size, batch_size, max_nrof_epochs, 
