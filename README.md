@@ -11,6 +11,6 @@ six 1.0 or higher
 Make "data" directory in this directory. Put the [LFW dataset](http://vis-www.cs.umass.edu/lfw/) in that directory
 
 # How to use
-"""
+'''
 python lfw_driver.py
-"""
+'''
