@@ -8,7 +8,9 @@ numpy 1.11.3 or higher
 six 1.0 or higher
 
 # Preparation
-Get the LFW data and put it to data directory
+Make "data" directory in this directory. Put the [LFW dataset](http://vis-www.cs.umass.edu/lfw/) in that directory
 
 # How to use
+"""
 python lfw_driver.py
+"""
