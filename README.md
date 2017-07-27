@@ -13,3 +13,7 @@ Make "data" directory in this directory. Put the [LFW dataset](http://vis-www.cs
 # How to use
 python lfw_driver.py
 
+# Acknowledgement
+ntddk
+habakan
+
